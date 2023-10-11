@@ -1,6 +1,7 @@
 
 #include "utils.h"
 
+
 void display_vector(const std::vector<int> &vec) {
     int size = vec.size();
 
