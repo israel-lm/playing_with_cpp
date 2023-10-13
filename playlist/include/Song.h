@@ -23,11 +23,11 @@ public:
     int get_rating() const {
         return rating;
     }
-    
+
     bool operator<(const Song &rhs) const  {
         return this->name < rhs.name;
     }
-    
+
     bool operator==(const Song &rhs) const  {
         return this->name == rhs.name;
     }
