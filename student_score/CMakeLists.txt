@@ -1,0 +1,1 @@
+add_executable(StudentScores src/main.cpp)
