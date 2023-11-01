@@ -55,8 +55,23 @@ namespace playing_with_cpp {
              */
             void DisplayList() const;
 
+            /**
+             * @brief Get the Current playing song
+             *
+             * @return Song object
+             */
+            playing_with_cpp::song::Song GetCurrentSong() const{
+                return this->current_song;
+            }
 
-            playing_with_cpp::song::Song& GetCurrentSong() const;
+            /**
+             * @brief Get all songs in the playlist
+             *
+             * @return List of songs
+             */
+            std::list<playing_with_cpp::song::Song> GetAllSongs() const{
+                return this->all_songs;
+            }
         };
     }
 }
