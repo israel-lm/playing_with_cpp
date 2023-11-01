@@ -70,7 +70,7 @@ void display_menu() {
     std::cout << "Enter a selection (Q to quit): ";
 }
 
-Song get_new_song() {
+playing_with_cpp::song::Song get_new_song() {
     std::string name {};
     std::string artist {};
     std::string rating {};
@@ -96,13 +96,13 @@ Song get_new_song() {
         exit(-1);
     }
 
-    return Song(name, artist, r);
+    return playing_with_cpp::song::Song(name, artist, r);
 }
 
 
 int main() {
 
-    std::list<Song> songs{
+    std::list<playing_with_cpp::song::Song> songs{
             {"God's Plan",        "Drake",                     5},
             {"Never Be The Same", "Camila Cabello",            5},
             {"Pray For Me",       "The Weekend and K. Lamar",  4},
@@ -111,7 +111,7 @@ int main() {
             {"Whatever It Takes", "Imagine Dragons",           3}
     };
 
-    Playlist playlist(songs);
+    playing_with_cpp::playlist::Playlist playlist(songs);
     bool quit = false;
     char option = 'F';
 
