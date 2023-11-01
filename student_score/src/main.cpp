@@ -54,7 +54,7 @@ Average score            3.6
 #include <limits>
 
 
-std::list<char> get_list_from_string(const std::string &s) {
+std::list<char> GetListFromString(const std::string &s) {
     std::list<char> l;
     for (char c: s) {
         l.push_back(c);
@@ -64,7 +64,7 @@ std::list<char> get_list_from_string(const std::string &s) {
 }
 
 
-int get_score(const std::list<char> &answers, const std::list<char> &answer_sheet) {
+int GetScore(const std::list<char> &answers, const std::list<char> &answer_sheet) {
     int score = 0;
     auto j = answer_sheet.begin();
 
@@ -76,19 +76,19 @@ int get_score(const std::list<char> &answers, const std::list<char> &answer_shee
     return score;
 }
 
-void display_scores(std::map<std::string, std::list<char>> &answers, const std::string &answer_sheet) {
+void DisplayScores(std::map<std::string, std::list<char>> &answers, const std::string &answer_sheet) {
     std::cout << std::setw(20) << std::left << "\nStudent"
                 << std::setw(10) << std::right << "Score" << std::endl;
     std::cout << "================================" << std::endl;
 
     for (auto it = answers.begin(); it != answers.end(); it++) {
-        int score = get_score(it->second, get_list_from_string(answer_sheet));
+        int score = GetScore(it->second, GetListFromString(answer_sheet));
         std::cout << std::setw(20) << std::left << it->first
                 << std::setw(10) << std::right << std::to_string(score) << std::endl;
     }
 }
 
-void display_map(std::map<std::string, std::list<char>> &m) {
+void DisplayMap(std::map<std::string, std::list<char>> &m) {
     for (auto i: m) {
         std::cout << "String: " << i.first << std::endl;
         std::cout << " List: ";
@@ -115,7 +115,7 @@ int main() {
                 answer = line;
             }
             else {
-                answers[line] = get_list_from_string(answer);
+                answers[line] = GetListFromString(answer);
             }
             ++line_number;
         }
@@ -125,6 +125,6 @@ int main() {
         std::cerr << "Error opening input file" << std::endl;
     }
 
-    display_scores(answers, answer_sheet);
+    DisplayScores(answers, answer_sheet);
 
 }

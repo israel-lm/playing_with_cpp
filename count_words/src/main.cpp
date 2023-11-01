@@ -61,7 +61,7 @@ once you read in a line from the file.
 Note: I have provided the basic shell for your program.
 I have also provided the functions that display the maps
 as well as the function that cleans the words read.
-You should call the clean_string function for every word
+You should call the CleanStrings function for every word
 you read from the file.
 
 Good luck and have fun!!!
@@ -79,7 +79,7 @@ Don't over think this one -- use the STL!
 // Display the word and count from the
 // std::map<std::string, int>
 
-void display_words(const std::map<std::string, int> &words) {
+void DisplayWords(const std::map<std::string, int> &words) {
     std::cout << std::setw(12) << std::left << "\nWord"
                 << std::setw(7) << std::right << "Count"<< std::endl;
     std::cout << "===================" << std::endl;
@@ -92,7 +92,7 @@ void display_words(const std::map<std::string, int> &words) {
 // Display the word and occurences from the
 // std::map<std::string, std::set<int>>
 
-void display_words(const std::map<std::string, std::set<int>> &words)
+void DisplayWords(const std::map<std::string, std::set<int>> &words)
 {
      std::cout << std::setw(12) << std::left << "\nWord"
                 << "Occurrences"<< std::endl;
@@ -108,7 +108,7 @@ void display_words(const std::map<std::string, std::set<int>> &words)
 
 // This function removes periods, commas, semicolons and colon in
 // a string and returns the clean version
-std::string clean_string(const std::string &s) {
+std::string CleanStrings(const std::string &s) {
     std::string result;
     for (char c: s) {
         if (c == '.' || c == ',' || c == ';' || c == ':')
@@ -122,7 +122,7 @@ std::string clean_string(const std::string &s) {
 // Part1 process the file and builds a map of words and the
 // number of times they occur in the file
 
-void part1() {
+void Part1() {
     std::map<std::string, int> words;
     std::string line;
     std::string word;
@@ -133,7 +133,7 @@ void part1() {
         while( std::getline(in_file, line)) {
             std::istringstream line_stream {line};
             while (line_stream >> word) {
-                word = clean_string(word);
+                word = CleanStrings(word);
                 if (words.find(word) != words.end()) {
                     words[word] += 1;
                 }
@@ -144,7 +144,7 @@ void part1() {
         }
 
         in_file.close();
-        display_words(words);
+        DisplayWords(words);
     } else {
         std::cerr << "Error opening input file" << std::endl;
     }
@@ -152,7 +152,7 @@ void part1() {
 
 // Part2 process the file and builds a map of words and a
 // set of line numbers in which the word appears
-void part2() {
+void Part2() {
     std::map<std::string, std::set<int>> words;
     std::string line;
     std::string word;
@@ -163,7 +163,7 @@ void part2() {
         while( std::getline(in_file, line)) {
             std::istringstream line_stream {line};
             while (line_stream >> word) {
-                word = clean_string(word);
+                word = CleanStrings(word);
                 if (words.find(word) != words.end()) {
                     words[word].insert(line_number);
                 }
@@ -175,14 +175,14 @@ void part2() {
             line_number++;
         }
         in_file.close();
-        display_words(words);
+        DisplayWords(words);
     } else {
         std::cerr << "Error opening input file" << std::endl;
     }
 }
 
 int main() {
-    part1();
-    part2();
+    Part1();
+    Part2();
     return 0;
 }

@@ -2,7 +2,7 @@
 #include "utils.h"
 
 
-void display_vector(const std::vector<int> &vec) {
+void DisplayVector(const std::vector<int> &vec) {
     int size = vec.size();
 
     std::cout << "Vector size: " << size << std::endl;
@@ -12,9 +12,9 @@ void display_vector(const std::vector<int> &vec) {
     std::cout << std::endl;
 }
 
-void display_matrix(std::vector<std::vector<int>> &matrix) {
+void DisplayMatrix(std::vector<std::vector<int>> &matrix) {
     std::cout << "Displaying matrix content" << std::endl;
     for (int i = 0; i < matrix.size(); i++) {
-        display_vector(matrix.at(i));
+        DisplayVector(matrix.at(i));
     }
 }

@@ -1,5 +1,5 @@
 // Section 10
-// Challenge - 
+// Challenge -
 // Substitution Cipher
 
 /*
@@ -14,7 +14,7 @@ Encrypt this message using the substitution cipher and display the encrypted mes
 Then decryped the encrypted message back to the original message.
 
 You may use the 2 strings below for  your subsitition.
-For example, to encrypt you can replace the character at position n in alphabet 
+For example, to encrypt you can replace the character at position n in alphabet
 with the character at position n in key.
 
 To decrypt you can replace the character at position n in key
@@ -33,7 +33,7 @@ Reuse existing functionality in libraries and in the std::string class!
 #include <string>
 
 int main() {
-    
+
     std::string alphabet {"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"};
     std::string key  {"XZNLWEBGJHQDYVTKFUOMPCIASRxznlwebgjhqdyvtkfuompciasr"};
     std::string original_msg {};
@@ -41,7 +41,7 @@ int main() {
 
     std::cout << "Enter a message to be encrypted: ";
     std::getline(std::cin, original_msg);
-    
+
     int msg_size = original_msg.size();
 
     if (msg_size <= 0) {
@@ -70,8 +70,8 @@ int main() {
     std::cout << "Original message: " << original_msg << std::endl;
     std::cout << "Encrypted message: " << encrypted_msg << std::endl;
     std::cout << "Decrypted message: " << decrypted_msg << std::endl;
-    
-    
+
+
     std::cout << std::endl;
     return 0;
 }
