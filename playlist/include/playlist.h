@@ -6,7 +6,7 @@
 #include <iomanip>
 #include <limits>
 
-#include "Song.h"
+#include "song.h"
 
 
 class Playlist {
@@ -19,7 +19,7 @@ private:
      * @param song Object of the song to be found
      * @return Iterator with the location of the song
     */
-    std::list<Song>::iterator locate_song(const Song &song);
+    std::list<Song>::iterator LocateSong(const Song &song);
 
 public:
     Playlist(std::list<Song> songs): all_songs(songs), current_song(*(songs.begin())) {}
@@ -29,30 +29,30 @@ public:
      *
      * @param song Object of the song to be added
      */
-    void insert_song(const Song &song);
+    void InsertSong(const Song &song);
 
     /**
      * @brief Play the song following the current playing song
      *
      */
-    void play_next();
+    void PlayNext();
 
     /**
      * @brief Play the song previous to the current playing song
      *
      */
-    void play_previous();
+    void PlayPrevious();
 
     /**
      * @brief Play the song indicated by the object current_song
      */
-    void play_current_song();
+    void PlayCurrentSong();
 
     /**
      * @brief Display the list of songs present in the playlist
      *
      */
-    void display_list();
+    void DisplayList();
 };
 
 #endif

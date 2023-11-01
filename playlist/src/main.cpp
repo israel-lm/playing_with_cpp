@@ -56,7 +56,7 @@ Make sure you #include <limits> to use it.
 #include <cctype>
 
 
-#include "Playlist.h"
+#include "playlist.h"
 
 
 void display_menu() {
@@ -123,19 +123,19 @@ int main() {
 
         switch(option){
             case 'F':
-                playlist.play_current_song();
+                playlist.PlayCurrentSong();
                 break;
             case 'N':
-                playlist.play_next();
+                playlist.PlayNext();
                 break;
             case 'P':
-                playlist.play_previous();
+                playlist.PlayPrevious();
                 break;
             case 'A':
-                playlist.insert_song(get_new_song());
+                playlist.InsertSong(get_new_song());
                 break;
             case 'L':
-                playlist.display_list();
+                playlist.DisplayList();
                 break;
             case 'Q':
                 quit = true;
