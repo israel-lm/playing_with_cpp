@@ -3,4 +3,8 @@ gtest/1.14.0
 
 [generators]
 CMakeDeps
+<<<<<<< HEAD
 CMakeToolChain
+=======
+CMakeToolchain
+>>>>>>> Add GTest to the project
