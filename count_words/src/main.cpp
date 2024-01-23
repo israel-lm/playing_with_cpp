@@ -120,8 +120,8 @@ void countWords() {
     std::ifstream inFile {"../count_words/resources/words.txt"};
     if (inFile) {
         while( std::getline(inFile, line)) {
-            std::istringstream line_stream {line};
-            while (line_stream >> word) {
+            std::istringstream lineStream {line};
+            while (lineStream >> word) {
                 word = cleanStrings(word);
                 if (words.find(word) != words.end()) {
                     words[word] += 1;
@@ -152,8 +152,8 @@ void getLineNumbers() {
         int lineNumber = 0;
         // You implement this code
         while( std::getline(inFile, line)) {
-            std::istringstream line_stream {line};
-            while (line_stream >> word) {
+            std::istringstream lineStream {line};
+            while (lineStream >> word) {
                 word = cleanStrings(word);
                 if (words.find(word) != words.end()) {
                     words[word].insert(lineNumber);
