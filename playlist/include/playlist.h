@@ -12,8 +12,8 @@ namespace playing_with_cpp {
     namespace playlist {
         class Playlist {
         private:
-            std::list<Song> all_songs;
-            Song current_song;
+            std::list<Song> allSongs;
+            Song currentSong;
 
             /**
              * @brief Locate a song in the list
@@ -23,7 +23,7 @@ namespace playing_with_cpp {
             std::list<Song>::iterator locateSong(const Song &song);
 
         public:
-            Playlist(std::list<Song> songs): all_songs(songs), current_song(*(songs.begin())) {}
+            Playlist(std::list<Song> songs): allSongs(songs), currentSong(*(songs.begin())) {}
 
             /**
              * @brief Insert a new song to the playlist and play it
@@ -45,7 +45,7 @@ namespace playing_with_cpp {
             void playPrevious();
 
             /**
-             * @brief Play the song indicated by the object current_song
+             * @brief Play the song indicated by the object currentSong
              */
             void playCurrentSong();
 
@@ -61,7 +61,7 @@ namespace playing_with_cpp {
              * @return Song object
              */
             Song getCurrentSong() const{
-                return this->current_song;
+                return this->currentSong;
             }
 
             /**
@@ -70,7 +70,7 @@ namespace playing_with_cpp {
              * @return List of songs
              */
             std::list<Song> getAllSongs() const{
-                return this->all_songs;
+                return this->allSongs;
             }
         };
     }

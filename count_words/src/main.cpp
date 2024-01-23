@@ -117,9 +117,9 @@ void countWords() {
     std::map<std::string, int> words;
     std::string line;
     std::string word;
-    std::ifstream in_file {"../count_words/resources/words.txt"};
-    if (in_file) {
-        while( std::getline(in_file, line)) {
+    std::ifstream inFile {"../count_words/resources/words.txt"};
+    if (inFile) {
+        while( std::getline(inFile, line)) {
             std::istringstream line_stream {line};
             while (line_stream >> word) {
                 word = cleanStrings(word);
@@ -132,7 +132,7 @@ void countWords() {
             }
         }
 
-        in_file.close();
+        inFile.close();
         displayWords(words);
     } else {
         std::cerr << "Error opening input file" << std::endl;
@@ -147,25 +147,25 @@ void getLineNumbers() {
     std::map<std::string, std::set<int>> words;
     std::string line;
     std::string word;
-    std::ifstream in_file {"../count_words/resources/words.txt"};
-    if (in_file) {
-        int line_number = 0;
+    std::ifstream inFile {"../count_words/resources/words.txt"};
+    if (inFile) {
+        int lineNumber = 0;
         // You implement this code
-        while( std::getline(in_file, line)) {
+        while( std::getline(inFile, line)) {
             std::istringstream line_stream {line};
             while (line_stream >> word) {
                 word = cleanStrings(word);
                 if (words.find(word) != words.end()) {
-                    words[word].insert(line_number);
+                    words[word].insert(lineNumber);
                 }
                 else {
-                    std::set<int> c {line_number};
+                    std::set<int> c {lineNumber};
                     words[word] = c;
                 }
             }
-            line_number++;
+            lineNumber++;
         }
-        in_file.close();
+        inFile.close();
         displayWords(words);
     } else {
         std::cerr << "Error opening input file" << std::endl;

@@ -3,46 +3,46 @@
 using namespace playing_with_cpp;
 
 std::list<playlist::Song>::iterator playlist::Playlist::locateSong(const Song &song) {
-    return std::find(all_songs.begin(), all_songs.end(), song);
+    return std::find(allSongs.begin(), allSongs.end(), song);
 }
 
 
 void playlist::Playlist::playCurrentSong() {
-    std::cout << std::endl << "Playing: " << current_song.getName() << ", by " << current_song.getArtist() << std::endl;
+    std::cout << std::endl << "Playing: " << currentSong.getName() << ", by " << currentSong.getArtist() << std::endl;
 }
 
 
 void playlist::Playlist::insertSong(const Song &song){
-    auto it = locateSong(current_song);
-    all_songs.insert(it, song);
-    current_song = song;
+    auto it = locateSong(currentSong);
+    allSongs.insert(it, song);
+    currentSong = song;
     playCurrentSong();
 }
 
 
 void playlist::Playlist::playNext() {
-    auto it = locateSong(current_song);
-    if (++it == all_songs.end())
-        it = all_songs.begin();
+    auto it = locateSong(currentSong);
+    if (++it == allSongs.end())
+        it = allSongs.begin();
 
-    current_song = *it;
+    currentSong = *it;
     playCurrentSong();
 }
 
 
 void playlist::Playlist::playPrevious() {
-    auto it = locateSong(current_song);
-    if (it == all_songs.begin())
-        it = all_songs.end();
+    auto it = locateSong(currentSong);
+    if (it == allSongs.begin())
+        it = allSongs.end();
 
     --it;
-    current_song = *it;
+    currentSong = *it;
     playCurrentSong();
 }
 
 
 void playlist::Playlist::displayList() const {
-    for (auto song: all_songs) {
+    for (auto song: allSongs) {
         std::cout << "Name: " << song.getName() << ", Artist: " << song.getArtist() << ", Rating: " << song.getRating() << std::endl;
     }
 }
