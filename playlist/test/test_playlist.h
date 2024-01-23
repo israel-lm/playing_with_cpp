@@ -3,14 +3,16 @@
 
 #include "playlist.h"
 
+using namespace playing_with_cpp;
+
 class PlaylistTest : public testing::Test 
 {
 protected:    
-    std::unique_ptr<playing_with_cpp::playlist::Playlist> playlistPtr;
+    std::unique_ptr<playlist::Playlist> playlistPtr;
 
     void SetUp() override
     {
-        std::list<playing_with_cpp::song::Song> songs
+        std::list<playlist::Song> songs
         {
             {"God's Plan",        "Drake",                     5},
             {"Never Be The Same", "Camila Cabello",            5},
@@ -19,32 +21,32 @@ protected:
             {"Wait",              "Maroone 5",                 4},
             {"Whatever It Takes", "Imagine Dragons",           3}
         };
-        playlistPtr = std::make_unique<playing_with_cpp::playlist::Playlist>(songs);
+        playlistPtr = std::make_unique<playlist::Playlist>(songs);
     }
 
 };
 
 TEST_F(PlaylistTest, Creation)
 {
-    ASSERT_EQ(playlistPtr->GetCurrentSong().GetName(), "God's Plan");
+    ASSERT_EQ(playlistPtr->getCurrentSong().GetName(), "God's Plan");
 }
 
 TEST_F(PlaylistTest, NextSong)
 {
-    playlistPtr->PlayNext();
-    ASSERT_EQ(playlistPtr->GetCurrentSong().GetName(), "Never Be The Same");
+    playlistPtr->playNext();
+    ASSERT_EQ(playlistPtr->getCurrentSong().GetName(), "Never Be The Same");
 }
 
 TEST_F(PlaylistTest, PreviousSong)
 {
-    playlistPtr->PlayPrevious();
-    ASSERT_EQ(playlistPtr->GetCurrentSong().GetName(), "Whatever It Takes");
+    playlistPtr->playPrevious();
+    ASSERT_EQ(playlistPtr->getCurrentSong().GetName(), "Whatever It Takes");
 }
 
-TEST_F(PlaylistTest, InsertSong)
+TEST_F(PlaylistTest, insertSong)
 {
-    playing_with_cpp::song::Song song("Indestructible", "Welshly Arms", 5);
-    playlistPtr->InsertSong(song);
+    playlist::Song song("Indestructible", "Welshly Arms", 5);
+    playlistPtr->insertSong(song);
 
-    ASSERT_EQ(playlistPtr->GetCurrentSong().GetName(), "Indestructible");
+    ASSERT_EQ(playlistPtr->getCurrentSong().GetName(), "Indestructible");
 }

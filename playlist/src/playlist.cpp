@@ -1,54 +1,55 @@
 #include "playlist.h"
 
+using namespace playing_with_cpp;
 
-std::list<playing_with_cpp::song::Song>::iterator playing_with_cpp::playlist::Playlist::LocateSong(const playing_with_cpp::song::Song &song) {
+std::list<playlist::Song>::iterator playlist::Playlist::locateSong(const Song &song) {
     return std::find(all_songs.begin(), all_songs.end(), song);
 }
 
 
-void playing_with_cpp::playlist::Playlist::PlayCurrentSong() {
+void playlist::Playlist::playCurrentSong() {
     std::cout << std::endl << "Playing: " << current_song.GetName() << ", by " << current_song.GetArtist() << std::endl;
 }
 
 
-void playing_with_cpp::playlist::Playlist::InsertSong(const playing_with_cpp::song::Song &song){
-    auto it = LocateSong(current_song);
+void playlist::Playlist::insertSong(const Song &song){
+    auto it = locateSong(current_song);
     all_songs.insert(it, song);
     current_song = song;
-    PlayCurrentSong();
+    playCurrentSong();
 }
 
 
-void playing_with_cpp::playlist::Playlist::PlayNext() {
-    auto it = LocateSong(current_song);
+void playlist::Playlist::playNext() {
+    auto it = locateSong(current_song);
     if (++it == all_songs.end())
         it = all_songs.begin();
 
     current_song = *it;
-    PlayCurrentSong();
+    playCurrentSong();
 }
 
 
-void playing_with_cpp::playlist::Playlist::PlayPrevious() {
-    auto it = LocateSong(current_song);
+void playlist::Playlist::playPrevious() {
+    auto it = locateSong(current_song);
     if (it == all_songs.begin())
         it = all_songs.end();
 
     --it;
     current_song = *it;
-    PlayCurrentSong();
+    playCurrentSong();
 }
 
 
-void playing_with_cpp::playlist::Playlist::DisplayList() const {
+void playlist::Playlist::displayList() const {
     for (auto song: all_songs) {
         std::cout << "Name: " << song.GetName() << ", Artist: " << song.GetArtist() << ", Rating: " << song.GetRating() << std::endl;
     }
 }
 
 namespace playing_with_cpp {
-    namespace song {
-        std::ostream &operator<<(std::ostream &os, const playing_with_cpp::song::Song &s) {
+    namespace playlist {
+        std::ostream &operator<<(std::ostream &os, const playlist::Song &s) {
             os << std::setw(20) << std::left << s.name
             << std::setw(30) << std::left << s.artist
             << std::setw(2) << std::left << s.rating;
@@ -56,4 +57,3 @@ namespace playing_with_cpp {
         }
     }
 }
-

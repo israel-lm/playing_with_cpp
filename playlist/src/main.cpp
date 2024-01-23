@@ -1,16 +1,10 @@
 /*
-Section 20
-Challenge 2
-Using std::list
-
 In this challenge you will create a menu driven application that
 will simulate a user playing songs from a playlist of songs.
 
 We will use a list to simulate the user selecting the first song in the playlist and
 then selecting next and previous to play forward or backwards through the
 playlist.
-
-Please refer to the video demo run.
 
 We will also allow users to add new song to the playlist and they
 will be added prior to the currently playing song.
@@ -58,8 +52,9 @@ Make sure you #include <limits> to use it.
 
 #include "playlist.h"
 
+using namespace playing_with_cpp;
 
-void display_menu() {
+void displayMenu() {
     std::cout << std::endl << std::endl;
     std::cout << "\nF - Play First Song" << std::endl;
     std::cout << "N - Play Next song" << std::endl;
@@ -70,7 +65,7 @@ void display_menu() {
     std::cout << "Enter a selection (Q to quit): ";
 }
 
-playing_with_cpp::song::Song get_new_song() {
+playlist::Song getNewSong() {
     std::string name {};
     std::string artist {};
     std::string rating {};
@@ -96,13 +91,13 @@ playing_with_cpp::song::Song get_new_song() {
         exit(-1);
     }
 
-    return playing_with_cpp::song::Song(name, artist, r);
+    return playlist::Song(name, artist, r);
 }
 
 
 int main() {
 
-    std::list<playing_with_cpp::song::Song> songs{
+    std::list<playlist::Song> songs{
             {"God's Plan",        "Drake",                     5},
             {"Never Be The Same", "Camila Cabello",            5},
             {"Pray For Me",       "The Weekend and K. Lamar",  4},
@@ -111,31 +106,31 @@ int main() {
             {"Whatever It Takes", "Imagine Dragons",           3}
     };
 
-    playing_with_cpp::playlist::Playlist playlist(songs);
+    playlist::Playlist playlist(songs);
     bool quit = false;
     char option = 'F';
 
     while(!quit) {
         std::cin.clear();
-        display_menu();
+        displayMenu();
         std::cin >> option;
         option = toupper(option);
 
         switch(option){
             case 'F':
-                playlist.PlayCurrentSong();
+                playlist.playCurrentSong();
                 break;
             case 'N':
-                playlist.PlayNext();
+                playlist.playNext();
                 break;
             case 'P':
-                playlist.PlayPrevious();
+                playlist.playPrevious();
                 break;
             case 'A':
-                playlist.InsertSong(get_new_song());
+                playlist.insertSong(getNewSong());
                 break;
             case 'L':
-                playlist.DisplayList();
+                playlist.displayList();
                 break;
             case 'Q':
                 quit = true;

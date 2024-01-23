@@ -6,7 +6,7 @@
 #include <iostream>
 
 namespace playing_with_cpp {
-    namespace song {
+    namespace playlist {
         class Song {
             friend std::ostream& operator<<(std::ostream &os, const Song &s);
             std::string name;

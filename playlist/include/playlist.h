@@ -12,55 +12,55 @@ namespace playing_with_cpp {
     namespace playlist {
         class Playlist {
         private:
-            std::list<playing_with_cpp::song::Song> all_songs;
-            playing_with_cpp::song::Song current_song;
+            std::list<Song> all_songs;
+            Song current_song;
 
             /**
              * @brief Locate a song in the list
              * @param song Object of the song to be found
              * @return Iterator with the location of the song
             */
-            std::list<playing_with_cpp::song::Song>::iterator LocateSong(const playing_with_cpp::song::Song &song);
+            std::list<Song>::iterator locateSong(const Song &song);
 
         public:
-            Playlist(std::list<playing_with_cpp::song::Song> songs): all_songs(songs), current_song(*(songs.begin())) {}
+            Playlist(std::list<Song> songs): all_songs(songs), current_song(*(songs.begin())) {}
 
             /**
              * @brief Insert a new song to the playlist and play it
              *
              * @param song Object of the song to be added
              */
-            void InsertSong(const playing_with_cpp::song::Song &song);
+            void insertSong(const Song &song);
 
             /**
              * @brief Play the song following the current playing song
              *
              */
-            void PlayNext();
+            void playNext();
 
             /**
              * @brief Play the song previous to the current playing song
              *
              */
-            void PlayPrevious();
+            void playPrevious();
 
             /**
              * @brief Play the song indicated by the object current_song
              */
-            void PlayCurrentSong();
+            void playCurrentSong();
 
             /**
              * @brief Display the list of songs present in the playlist
              *
              */
-            void DisplayList() const;
+            void displayList() const;
 
             /**
              * @brief Get the Current playing song
              *
              * @return Song object
              */
-            playing_with_cpp::song::Song GetCurrentSong() const{
+            Song getCurrentSong() const{
                 return this->current_song;
             }
 
@@ -69,12 +69,10 @@ namespace playing_with_cpp {
              *
              * @return List of songs
              */
-            std::list<playing_with_cpp::song::Song> GetAllSongs() const{
+            std::list<Song> getAllSongs() const{
                 return this->all_songs;
             }
         };
     }
 }
-
-
 #endif
