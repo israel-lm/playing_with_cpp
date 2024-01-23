@@ -16,13 +16,13 @@ namespace playing_with_cpp {
             Song() = default;
             Song(std::string name, std::string artist, int rating)
                     : name{name}, artist{artist}, rating{rating} {}
-            std::string GetName() const {
+            std::string getName() const {
                 return name;
             }
-            std::string GetArtist() const {
+            std::string getArtist() const {
                 return artist;
             }
-            int GetRating() const {
+            int getRating() const {
                 return rating;
             }
 

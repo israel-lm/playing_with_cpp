@@ -8,7 +8,7 @@ std::list<playlist::Song>::iterator playlist::Playlist::locateSong(const Song &s
 
 
 void playlist::Playlist::playCurrentSong() {
-    std::cout << std::endl << "Playing: " << current_song.GetName() << ", by " << current_song.GetArtist() << std::endl;
+    std::cout << std::endl << "Playing: " << current_song.getName() << ", by " << current_song.getArtist() << std::endl;
 }
 
 
@@ -43,7 +43,7 @@ void playlist::Playlist::playPrevious() {
 
 void playlist::Playlist::displayList() const {
     for (auto song: all_songs) {
-        std::cout << "Name: " << song.GetName() << ", Artist: " << song.GetArtist() << ", Rating: " << song.GetRating() << std::endl;
+        std::cout << "Name: " << song.getName() << ", Artist: " << song.getArtist() << ", Rating: " << song.getRating() << std::endl;
     }
 }
 

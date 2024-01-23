@@ -28,19 +28,19 @@ protected:
 
 TEST_F(PlaylistTest, Creation)
 {
-    ASSERT_EQ(playlistPtr->getCurrentSong().GetName(), "God's Plan");
+    ASSERT_EQ(playlistPtr->getCurrentSong().getName(), "God's Plan");
 }
 
 TEST_F(PlaylistTest, NextSong)
 {
     playlistPtr->playNext();
-    ASSERT_EQ(playlistPtr->getCurrentSong().GetName(), "Never Be The Same");
+    ASSERT_EQ(playlistPtr->getCurrentSong().getName(), "Never Be The Same");
 }
 
 TEST_F(PlaylistTest, PreviousSong)
 {
     playlistPtr->playPrevious();
-    ASSERT_EQ(playlistPtr->getCurrentSong().GetName(), "Whatever It Takes");
+    ASSERT_EQ(playlistPtr->getCurrentSong().getName(), "Whatever It Takes");
 }
 
 TEST_F(PlaylistTest, insertSong)
@@ -48,5 +48,5 @@ TEST_F(PlaylistTest, insertSong)
     playlist::Song song("Indestructible", "Welshly Arms", 5);
     playlistPtr->insertSong(song);
 
-    ASSERT_EQ(playlistPtr->getCurrentSong().GetName(), "Indestructible");
+    ASSERT_EQ(playlistPtr->getCurrentSong().getName(), "Indestructible");
 }
