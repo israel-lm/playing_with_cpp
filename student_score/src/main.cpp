@@ -1,6 +1,4 @@
 /*
-Section 19
-Challenge 2
 Automated Grader
 
 Write a program that reads a file named 'responses.txt" that contains the answer key for a quiz
@@ -42,8 +40,8 @@ Curly                             2
 Michael                         4
 ---------------------------
 Average score            3.6
-
 */
+
 #include <iostream>
 #include <fstream>
 #include <map>
@@ -53,8 +51,13 @@ Average score            3.6
 #include <iomanip>
 #include <limits>
 
-
-std::list<char> GetListFromString(const std::string &s) {
+/**
+ * @brief Convert a string into a list of characters
+ * 
+ * @param s String to be converted
+ * @return List of characters
+ */
+std::list<char> getListFromString(const std::string &s) {
     std::list<char> l;
     for (char c: s) {
         l.push_back(c);
@@ -63,10 +66,16 @@ std::list<char> GetListFromString(const std::string &s) {
     return l;
 }
 
-
-int GetScore(const std::list<char> &answers, const std::list<char> &answer_sheet) {
+/**
+ * @brief Get the student's score given its answers and the answer sheet
+ * 
+ * @param answers Student's answers
+ * @param answerSheet Correct answers
+ * @return The sudent score
+ */
+int getScore(const std::list<char> &answers, const std::list<char> &answerSheet) {
     int score = 0;
-    auto j = answer_sheet.begin();
+    auto j = answerSheet.begin();
 
     for(auto i = answers.begin(); i != answers.end(); i++, j++) {
         if (*i == *j)
@@ -76,55 +85,51 @@ int GetScore(const std::list<char> &answers, const std::list<char> &answer_sheet
     return score;
 }
 
-void DisplayScores(std::map<std::string, std::list<char>> &answers, const std::string &answer_sheet) {
+/**
+ * @brief Display the students score given the answer sheet
+ * 
+ * @param answers Map of student name and the answers
+ * @param answerSheet The correct answers
+ */
+void displayScores(std::map<std::string, std::list<char>> &answers, const std::string &answerSheet) {
     std::cout << std::setw(20) << std::left << "\nStudent"
                 << std::setw(10) << std::right << "Score" << std::endl;
     std::cout << "================================" << std::endl;
 
     for (auto it = answers.begin(); it != answers.end(); it++) {
-        int score = GetScore(it->second, GetListFromString(answer_sheet));
+        int score = getScore(it->second, getListFromString(answerSheet));
         std::cout << std::setw(20) << std::left << it->first
                 << std::setw(10) << std::right << std::to_string(score) << std::endl;
     }
 }
 
-void DisplayMap(std::map<std::string, std::list<char>> &m) {
-    for (auto i: m) {
-        std::cout << "String: " << i.first << std::endl;
-        std::cout << " List: ";
-        for (auto j: i.second) {
-            std::cout << j << " ";
-        }
-        std::cout << std::endl;
-    }
-}
 
 int main() {
-    std::string answer_sheet = "ABCDE";
-    std::ifstream in_file {"../student_score/resources/responses.txt"};
+    std::string answerSheet = "ABCDE";
+    std::ifstream inFile {"../student_score/resources/responses.txt"};
     std::map<std::string, std::list<char>> answers;
 
     std::string line;
     std::string answer {};
 
-    int line_number = 0;
+    int lineNumber = 0;
 
-    if (in_file) {
-        while(std::getline(in_file, line)) {
-            if (line_number % 2 == 0) { //lines with answers
+    if (inFile) {
+        while(std::getline(inFile, line)) {
+            if (lineNumber % 2 == 0) { //lines with answers
                 answer = line;
             }
             else {
-                answers[line] = GetListFromString(answer);
+                answers[line] = getListFromString(answer);
             }
-            ++line_number;
+            ++lineNumber;
         }
-        in_file.close();
+        inFile.close();
     }
     else {
         std::cerr << "Error opening input file" << std::endl;
     }
 
-    DisplayScores(answers, answer_sheet);
+    displayScores(answers, answerSheet);
 
 }
